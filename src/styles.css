@@ -1,3 +1,25 @@
 body {
   display: block;
+  background-color: #F5F5F7;
 }
+
+.subcontainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 736px;
+  background-color: #FFFFFF;
+}
+
+.subcontainer1{
+  display: flex;
+  flex: 1;
+}
+
+.subcontainer2{
+  display: flex;
+
+  flex: 1;
+}
+
