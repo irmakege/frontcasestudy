@@ -20,6 +20,7 @@
     "allowSyntheticDefaultImports": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "noImplicitAny": false
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "references": [
