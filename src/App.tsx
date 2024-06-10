@@ -6,23 +6,31 @@ import icon2 from '../src/assets/icon/icon2.svg'
 import icon3 from '../src/assets/icon/icon3.svg'
 import icon4 from '../src/assets/icon/icon4.svg'
 import icon5 from '../src/assets/icon/icon5.svg'
+import icon1clicked from '../src/assets/icon/icon1clicked.svg'
+import icon2clicked from '../src/assets/icon/icon2clicked.svg'
+import icon3clicked from '../src/assets/icon/icon3clicked.svg'
+import icon4clicked from '../src/assets/icon/icon4clicked.svg'
+import icon5clicked from '../src/assets/icon/icon5clicked.svg'
 
 const buttonItems = [
-  { id: 0, icon: icon1, text: 'Document Scanner', heading: "DOCUMENT SCANNER", subheading: "Scan with Ease", pr: "Scan any document instantly with your mobile device by just\na few steps. Save as PDF,JPG,ZIP,TXT and Word format." },
-  { id: 1, icon: icon2, text: 'Sign & Stamp', heading: "SIGN & STAMP", subheading: "One-Tap Focus", pr: "Draw, scan or import your signature and stamp with a simple\ntouch. Sign and stamp any document with just a single tap!" },
-  { id: 2, icon: icon3, text: 'Batch Scanning', heading: "BATCH SCANNING", subheading: "Multiple Page Scan", pr: "Scan multiple pages or documents in multiple-scanning\nmode. Batch all scans as a single document." },
-  { id: 3, icon: icon4, text: 'Advanced Filters', heading: "ADVANCED FILTERS", subheading: "Unique Filters", pr: "Apply advanced filters and enhance quality with various\ncustom made filters. Manually edit brightness and contrast by\nyour own choice on the custom filters." },
-  { id: 4, icon: icon5, text: 'Export & Share', heading: "EXPORT & SHARE", subheading: "All-Round Cenversion", pr: "Export your scans as PDF,JPG,ZIP,TXT and Word." },
+  { id: 0, icon: icon1, iconClicked: icon1clicked, text: 'Document Scanner', heading: "DOCUMENT SCANNER", subheading: "Scan with Ease", pr: "Scan any document instantly with your mobile device by just\na few steps. Save as PDF,JPG,ZIP,TXT and Word format." },
+  { id: 1, icon: icon2, iconClicked: icon2clicked, text: 'Sign & Stamp', heading: "SIGN & STAMP", subheading: "One-Tap Focus", pr: "Draw, scan or import your signature and stamp with a simple\ntouch. Sign and stamp any document with just a single tap!" },
+  { id: 2, icon: icon3, iconClicked: icon3clicked, text: 'Batch Scanning', heading: "BATCH SCANNING", subheading: "Multiple Page Scan", pr: "Scan multiple pages or documents in multiple-scanning\nmode. Batch all scans as a single document." },
+  { id: 3, icon: icon4, iconClicked: icon4clicked, text: 'Advanced Filters', heading: "ADVANCED FILTERS", subheading: "Unique Filters", pr: "Apply advanced filters and enhance quality with various\ncustom made filters. Manually edit brightness and contrast by\nyour own choice on the custom filters." },
+  { id: 4, icon: icon5, iconClicked: icon5clicked, text: 'Export & Share', heading: "EXPORT & SHARE", subheading: "All-Round Cenversion", pr: "Export your scans as PDF,JPG,ZIP,TXT and Word." },
 ];
 
 export function App() {
 
   const [currentButton, setCurrentButton] = useState();
+  const [clickedDivs, setClickedDivs] = useState(0);
 
 
   function handleClick(id) {
     setCurrentButton(id);
+    setClickedDivs(id);
   }
+
 
   return (
     <>
@@ -55,9 +63,13 @@ export function App() {
 
           <div className="buttoncontainer">
             {buttonItems.map(item => (
-              <div className="buttonitem" onClick={() => handleClick(item.id)}>
-                <div className='iconborder'>
-                  <img src={item.icon} />
+              <div
+                key={item.id}
+                className={`buttonitem ${clickedDivs === item.id ? 'clicked' : 'not-clicked'}`}
+                onClick={() => handleClick(item.id)}
+              >
+                <div className={clickedDivs === item.id ? 'iconborder-clicked' : 'iconborder'}>
+                  <img src={clickedDivs === item.id ? item.iconClicked : item.icon} className='icon'/>
                 </div>
                 <span className='heading4'>{item.text}</span>
               </div>

@@ -17,14 +17,8 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-color: #FBFCFC;
 
-}
-
-.subrowcontainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 
 .subsubcontainer1 {
@@ -95,7 +89,6 @@ body {
 .buttoncontainer {
   display: flex;
   flex-direction: row;
-
 }
 
 .buttonitem {
@@ -109,6 +102,7 @@ body {
   font-weight: 500;
   font-size: 20px;
   line-height: 28px;
+  margin-right: 1px;
 }
 
 /* Not given in design link */
@@ -117,9 +111,17 @@ body {
 }
 /* Not given in design link */
 
-.buttonitem:focus{
-  background-color: #0381FF08;
-  ; /* Change background color for active button */
+.clicked {
+  background-color:  #0381FF08;
+
+}
+
+.not-clicked {
+  background-color: #FFFFFF;
+}
+
+.icon{
+  position: relative;
 }
 
 .iconborder{
@@ -133,13 +135,65 @@ body {
 
 }
 
-.iconborder:active {
-  
-  background-color: red; 
+.iconborder-clicked {
+  display: flex;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #0381FF;  /* Change border color when clicked */
+  animation: rotate-border 2s forwards;
 }
 
-.iconborder:hover::after {
-  transition: transform 2s ease-in-out;
-  transform: rotate(360deg); /* Rotate 360 degrees to complete the circle */
-  background-color: lightblue; 
+@keyframes rotate-border {
+  0% {
+    border-color: linear(
+      from 0deg,
+      red 0deg,
+      red 90deg,
+      transparent 90deg,
+      transparent 360deg
+    );
+  }
+  25% {
+    border-color: conic-gradient(
+      from 90deg,
+      yellow 0deg,
+      yellow 90deg,
+      transparent 90deg,
+      transparent 360deg
+    );
+  }
+  50% {
+    border-color: conic-gradient(
+      from 180deg,
+      green 0deg,
+      green 90deg,
+      transparent 90deg,
+      transparent 360deg
+    );
+  }
+  75% {
+    border-color: conic-gradient(
+      from 270deg,
+      blue 0deg,
+      blue 90deg,
+      transparent 90deg,
+      transparent 360deg
+    );
+  }
+  100% {
+    border-color: conic-gradient(
+      from 360deg,
+      red 0deg,
+      red 90deg,
+      transparent 90deg,
+      transparent 360deg
+    );
+  }
 }
+
+
+
+
